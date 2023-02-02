@@ -1,0 +1,23 @@
+{
+    "name": "admin",
+    "version": "1.0.0",
+    "description": "crudjsasync project",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bettelgeuxe/crudjsasync.git"
+    },
+    "keywords": [
+      "Alura"
+    ],
+    "author": "Catherine Escobar",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/bettelgeuxe/crudjsasync/issues"
+    },
+    "homepage": "https://github.com/bettelgeuxe/crudjsasync#readme"
+  }
+  
