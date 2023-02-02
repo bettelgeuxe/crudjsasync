@@ -1,41 +1,15 @@
-const crearNuevaLinea = (nombre,email) => {
-    const linea = document.createElement("tr"); //tr apertura y cierre
-    const contenido = `
-            <td class="td" data-td>${nombre}</td>
-            <td>${email}</td>
-            <td>
-              <ul class="table__button-control">
-                <li>
-                  <a
-                    href="../screens/editar_cliente.html"
-                    class="simple-button simple-button--edit"
-                    >Editar</a
-                  >
-                </li>
-                <li>
-                  <button
-                    class="simple-button simple-button--delete"
-                    type="button"
-                  >
-                    Eliminar
-                  </button>
-                </li>
-              </ul>
-            </td>
-            `;
-            linea.innerHTML = contenido;
-            return linea;
+const listaClientes = () => fetch ("http://localhost:3000/perfil").then((respuesta) => respuesta.json());
+
+export const clientServices = {
+    listaClientes, //podría ser listaClientes:listaClientes pero no es necesario en js
 };
-
-const table = document.querySelector("[data-table]");
-
 //CRUD
 //promises
 //llamar funcion lista de clientes
 //Fetch API reemplaza contenido de const listaClientes() así PASAR DE 8 LINEAS A 3:
 //Si no se define el método, por defecto toma GET
 //PASAR A UNA SOLA LÍNEA DE CÓDIGO
-const listaClientes = () => fetch ("http://localhost:3000/perfil").then((respuesta) => respuesta.json());
+
 //const listaClientes = () =>{ 
     //fetch retorna la promesa de listaClientes()
     //abre conexión a la url
@@ -78,28 +52,3 @@ const listaClientes = () =>{
 };
 */
 
-listaClientes()
-    .then((data) => {
-        data.forEach( perfil => {
-            const nuevaLinea = crearNuevaLinea(perfil.nombre,perfil.email);
-            table.appendChild(nuevaLinea);
-    });
-})
-.catch((error) => alert("Ocurrión un error" + error));
-
-/*
-const http = new XMLHttpRequest();
-//abrir http recibe dos parámetros método y parámetro
-http.open("GET","http://localhost:3000/perfil");
-
-//enviar la petición del navegador o proyecto hacia el servidor de la url
-http.send();
-
-//mostrar el resultado al cargar la página
-http.onload = () => {
-    const data = JSON.parse(http.response);
-    console.log(data);
-    
-};
-
-*/
