@@ -1,7 +1,5 @@
 const crearNuevaLinea = (nombre,email) => {
     const linea = document.createElement("tr"); //tr apertura y cierre
-    
-
     const contenido = `
             <td class="td" data-td>${nombre}</td>
             <td>${email}</td>
@@ -34,6 +32,24 @@ const table = document.querySelector("[data-table]");
 //CRUD
 //promises
 //llamar funcion lista de clientes
+//Fetch API reemplaza contenido de const listaClientes() así PASAR DE 8 LINEAS A 3:
+//Si no se define el método, por defecto toma GET
+//PASAR A UNA SOLA LÍNEA DE CÓDIGO
+const listaClientes = () => fetch ("http://localhost:3000/perfil").then((respuesta) => respuesta.json());
+//const listaClientes = () =>{ 
+    //fetch retorna la promesa de listaClientes()
+    //abre conexión a la url
+    //genera la promesa y una vez se completa
+    //pasando a una sola línea de código opcion 2:
+    // return fetch ("http://localhost:3000/perfil").then((respuesta) => respuesta.json());
+    //código opcion 1:
+    //return fetch ("http://localhost:3000/perfil").then(respuesta =>{
+        //se recibe y se pasa a formato json para que se pueda tener acceso a data
+      //  return respuesta.json();
+
+    //});
+//};
+/*
 const listaClientes = () =>{
     //recibe una funcion, resolver y rechazar funcion async que no espera respuesta para continuar ejecución
     const promise = new Promise((resolve,reject) =>{
@@ -60,8 +76,8 @@ const listaClientes = () =>{
     });
     return promise;
 };
+*/
 
-//Fetch API
 listaClientes()
     .then((data) => {
         data.forEach( perfil => {
@@ -69,7 +85,7 @@ listaClientes()
             table.appendChild(nuevaLinea);
     });
 })
-.catch((error) => alert("Ocurrión un error"));
+.catch((error) => alert("Ocurrión un error" + error));
 
 /*
 const http = new XMLHttpRequest();
