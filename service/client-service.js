@@ -17,10 +17,30 @@ const eliminarCliente = (id) => {
 
 };
 
+const detalleCliente = (id) => {
+    return fetch(`http://localhost:3000/perfil/${id}`).then((respuesta) =>
+    respuesta.json()
+    );
+};
+
+const actualizarCliente = (nombre, email, id) => {
+    return fetch(`http://localhost:3000/perfil/${id}`,{
+        method: "PUT",
+        headers : {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({nombre, email})
+    })
+    .then((respuesta) => (respuesta))
+    .catch((err) => console.log(err));
+}
+
 export const clientServices = {
     listaClientes, //podría ser listaClientes:listaClientes pero no es necesario en js
     crearCliente,
     eliminarCliente,
+    detalleCliente,
+    actualizarCliente,
 };
 //CRUD
 //promises
